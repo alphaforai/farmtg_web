@@ -1,0 +1,33 @@
+/* 移动端优化 */
+
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  button,
+  a {
+    cursor: pointer;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* 与桌面端保持相同根字号，避免整体缩小 */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+}

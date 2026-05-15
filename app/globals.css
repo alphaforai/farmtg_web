@@ -1,26 +1,303 @@
 @import "tailwindcss";
+@source "../components/**/*.{js,ts,jsx,tsx}";
+@source "../app/**/*.{js,ts,jsx,tsx}";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "tw-animate-css";
+@import "./styles/mobile.css";
+@import "./styles/theme.css";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes features-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes features-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.features-marquee-left {
+  animation: features-marquee-left 28s linear infinite;
+}
+
+.features-marquee-right {
+  animation: features-marquee-right 32s linear infinite;
+}
+
+.features-marquee-left:hover,
+.features-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+@keyframes hero-code-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.hero-terminal-body {
+  background: linear-gradient(135deg, #f5f0ff 0%, #f3f0ff 45%, #eef4ff 100%);
+}
+
+.site-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-inline: 2.5rem;
+  }
+}
+
+.site-section {
+  position: relative;
+  padding-block: 5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .site-section {
+    padding-block: 6.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-section {
+    padding-block: 8rem;
+  }
+}
+
+.site-section--panel {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.25) 100%
+  );
+  border-block: 1px solid rgba(124, 189, 72, 0.12);
+}
+
+.site-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(124, 189, 72, 0.28);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 0.375rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4a6b2f;
+  backdrop-filter: blur(8px);
+}
+
+@media (min-width: 640px) {
+  .site-eyebrow {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1.125rem;
+  }
+}
+
+.site-heading {
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #1e3a0f;
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c2a 45%, #6ba83d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.site-subheading {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.7;
+  color: #5a6b4a;
+}
+
+.site-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #6ba83d 0%, #4a8f2a 100%);
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  box-shadow:
+    0 4px 14px rgba(74, 143, 42, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.site-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 8px 24px rgba(74, 143, 42, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.site-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(124, 189, 72, 0.45);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d5016;
+  backdrop-filter: blur(8px);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.site-btn-secondary:hover {
+  background: #fff;
+  border-color: rgba(124, 189, 72, 0.65);
+}
+
+.hero-code-viewport {
+  position: relative;
+  height: 18rem;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .hero-code-viewport {
+    height: 20rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-code-viewport {
+    height: 22rem;
+  }
+}
+
+.hero-farm-model {
+  position: relative;
+  height: 100%;
+  min-height: 18rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .hero-farm-model {
+    min-height: 20rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-farm-model {
+    min-height: 22rem;
+  }
+}
+
+.hero-code-viewport--scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 189, 72, 0.45) transparent;
+}
+
+.hero-code-track {
+  display: flex;
+  flex-direction: column;
+  animation: hero-code-scroll 22s linear infinite;
+  will-change: transform;
+}
+
+.hero-code-scroll-item {
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .features-marquee-left,
+  .features-marquee-right,
+  .ambient-float,
+  .ambient-pulse,
+  .hero-code-track {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* 轻量 CSS 动画，替代大量 JS 无限循环 */
+@keyframes ambient-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes ambient-float {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(0, 110vh, 0) rotate(360deg);
+  }
+}
+
+.ambient-pulse {
+  animation: ambient-pulse 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.ambient-float {
+  animation: ambient-float var(--float-duration, 4s) linear infinite;
+  animation-delay: var(--float-delay, 0s);
+  will-change: transform;
+}
+
+.features-marquee-left,
+.features-marquee-right {
+  will-change: transform;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
